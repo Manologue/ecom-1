@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- icons font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <!-- swiper js -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <!-- Box icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Proud</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav>
+      <!-- adding burger menu -->
+      <div class="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <h2 class="logo">Ecom-Shop</h2>
+      <div class="menu-list">
+        <a href="index.html">Home</a>
+        <!-- <a href="#collection">Collection</a> -->
+        <a href="products.html">Products</a>
+        <!-- <a href="#offers">Offers</a> -->
+        <!-- <a href="#contact">Contact</a> -->
+        <!-- <a href="#news">News</a> -->
+        <a href="about.html">About</a>
+      </div>
+      <div class="menu-right">
+        <div class="search">
+          <button class="btn btn-menu">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <div class="cart">
+          <button class="btn btn-menu">
+            <i class="bx bx-shopping-bag"></i>
+          </button>
+          <!-- adding cart list-->
+          <div class="cart-content">
+            <a href="#">
+              <div class="cart-detail">
+                <img class="cart-image" src="./images/pic1.jpg" alt="" />
+                <div class="cart-text">
+                  <h4>One Set Workout</h4>
+                  <p>2 items</p>
+                </div>
+                <h4>$120</h4>
+              </div>
+            </a>
+            <a href="#">
+              <div class="cart-detail">
+                <img class="cart-image" src="./images/pic2.jpg" alt="" />
+                <div class="cart-text">
+                  <h4>Knit Wear Yellow</h4>
+                  <p>1 items</p>
+                </div>
+                <h4>$120</h4>
+              </div>
+            </a>
+            <a href="#">
+              <div class="cart-detail">
+                <img class="cart-image" src="./images/pic3.jpg" alt="" />
+                <div class="cart-text">
+                  <h4>Pink Strip Dress</h4>
+                  <p>1 items</p>
+                </div>
+                <h4>$120</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="main-single-product">
+      <!-- single product -->
+      <section class="single-product">
+        <div class="container">
+          <div class="single-product-container">
+            <h3 class="directory">Home / Dress</h3>
+            <div class="product-gallery">
+              <!-- Slider main container -->
+              <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide">
+                    <img src="./images/aston-martin.jpg" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/audi-rs-e-tron-gt.jpg" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/maserati-mc20.jpg" alt="" />
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/nio-et5.jpg" alt="" />
+                  </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+            <div class="product-desc">
+              <div class="show">
+                <h2>Fashion Dress</h2>
+                <p>$139</p>
+                <select name="" id="">
+                  <option value="Select size">Select size</option>
+                  <option value="">M</option>
+                  <option value="">XXL</option>
+                  <option value="">XL</option>
+                </select>
+                <div class="quantity">
+                  <input type="number" min="1" value="1" max="" />
+                  <a href="#" class="btn btn-product">Add To Cart</a>
+                </div>
+              </div>
+              <div class="desc">
+                <h3 class="details-title">Details</h3>
+                <p class="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptate quod maiores exercitationem fuga modi quas optio
+                  animi autem recusandae voluptates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- related products -->
+      <section class="related-products">
+        <h2>related products</h2>
+        <div class="product-featured">
+          <button class="pre-btn">
+            <img src="images/arrow.png" alt="" />
+          </button>
+          <button class="nxt-btn">
+            <img src="images/arrow.png" alt="" />
+          </button>
+          <div class="product-container">
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card1.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card2.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card3.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card4.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card5.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card6.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card7.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card8.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card9.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+            <a href="./product.html">
+              <div class="product-card">
+                <div class="product-image">
+                  <span class="discount-tag">50% off</span>
+                  <img src="images/card10.jpg" class="product-thumb" alt="" />
+                  <a href="./cart.html" class="card-btn">add to cart</a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-brand">brand</h2>
+                  <p class="product-short-description">
+                    a short line about the cloth..
+                  </p>
+                  <span class="price">$20</span
+                  ><span class="actual-price">$40</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="container-slider-circle">
+            <div class="circle-slide circle-prev active"></div>
+            <div class="circle-slide circle-next"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer -->
+    <footer>
+      <div class="footer-wrapper">
+        <div class="footer-card">
+          <h3>pretty things</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            ullam tempore quas totam blanditiis, sint veritatis quaerat sed
+            natus exercitationem!
+          </p>
+          <div class="download-apps">
+            <img src="./images/Google_Play-Badge-Logo.wine.svg" alt="" />
+            <img
+              src="./images/download-on-the-app-store-apple-logo-svgrepo-com.svg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="footer-card">
+          <h4>Explore More</h4>
+          <a href="#">About</a>
+          <a href="#">Customer Service</a>
+          <a href="#">Help</a>
+          <a href="#">Blog</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-card">
+          <h4>Our Services</h4>
+          <a href="#">Free shipping</a>
+          <a href="#">Guarantee</a>
+          <a href="#">Gift card</a>
+          <a href="#">Pricing</a>
+          <a href="#">Refund product</a>
+          <a href="#">Payment Methods</a>
+        </div>
+        <div class="footer-card">
+          <h4>Our Product</h4>
+          <a href="#">Main Style</a>
+          <a href="#">Woman Style</a>
+          <a href="#">Casual</a>
+          <a href="#">Work Collection</a>
+          <a href="#">Flash Sale</a>
+        </div>
+        <div class="footer-card">
+          <h4>Follow Us</h4>
+          <a href="#"><i class="fab fa-facebook-f social-media"></i>Facebook</a>
+          <a href="#"><i class="fab fa-twitter social-media"></i>Twitter</a>
+          <a href="#"><i class="fab fa-instagram social-media"></i>Instagram</a>
+          <a href="#"><i class="fab fa-youtube social-media"></i>Youtube</a>
+        </div>
+      </div>
+      <hr class="divider" />
+      <p class="copyright">copyright Potential Webcode</p>
+    </footer>
+    <!-- js -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
