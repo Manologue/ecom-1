@@ -1,0 +1,273 @@
+const sideBarLinks = [...document.querySelectorAll("#sidebar li a")];
+
+sideBarLinks.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // change url on click
+    const url = item.getAttribute("href");
+    history.pushState(null, null, url);
+
+    const nextURL = url;
+    const nextTitle = "My new page title";
+    const nextState = { additionalInformation: "Updated the URL with JS" };
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState, nextTitle, nextURL);
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState, nextTitle, nextURL);
+
+    // get the link name on url
+    const linkName = url.split("/").pop();
+    console.log(linkName);
+
+    fetch(url)
+      .then(function (response) {
+        // The API call was successful!
+        return response.text();
+      })
+      .then(function (data) {
+        // This is the JSON from our response
+        console.log(data);
+        // insert data to the page
+        // document.querySelector("#content").innerHTML = data;
+      })
+      .catch(function (err) {
+        // There was an error
+        console.warn("Something went wrong.", err);
+      });
+  });
+});
+
+
+
+
+// get the current url
+    urlLink = window.location.href
+
+    const nextURL = urlLink
+    const nextTitle = 'My new page title'
+    const nextState = { additionalInformation: 'Updated the URL with JS' }
+
+    // This will create a new entry in the browser's history, without reloading
+    window.history.pushState(nextState, nextTitle, nextURL)
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState, nextTitle, nextURL)
+
+
+
+e.preventDefault()
+
+    // change url on click without reload
+
+    // const href = item.getAttribute('href')
+
+    // console.log(href)
+    // if (href === 'admin.php') {
+    //   console.log('admin')
+    //   url = 'admin_index.php'
+    //   console.log(url)
+    // } else {
+    //   url = `${href.split('?').pop()}.php`
+    // }
+    // fetch(`../../resources/templates/back/${url}`)
+    //   .then((res) => res.text())
+    //   .then((data) => {
+    //     container.innerHTML = data
+    //   })
+
+
+
+
+      e.preventDefault()
+    // get data from the form
+    const data = new FormData(form)
+    console.log(data)
+    // console log all the values of the form
+
+    const action = form.getAttribute('action')
+    console.log(action)
+    // insert action in data
+    data.append('action', action)
+    fetch(`../../resources/templates/back/ajax/${url}.php`, {
+      method: 'POST',
+      body: data,
+    })
+      .then((response) => response.text())
+      .then((response) => {
+        alertDiv.innerHTML = responses
+        // setTimeout(() => {
+        //   alert.innerHTML = ''
+        // }, 3000)
+      })
+      .catch((error) => console.log(error))
+
+
+
+
+      /********************************************************************************/
+
+      import { allSideMenu } from './sidebar.js'
+import pageOperation from './pageOperation.js'
+import fetchPages from './fetchPages.js'
+
+const container = document.querySelector('#main-container')
+
+const setMainSection = async (url) => {
+  // console.log(url)
+  if (url.includes('?')) {
+    // set the url on window after clicking on a link
+    const href = `${url.split('?').pop()}`
+    const nextURL = `admin.php?${href}`
+    const nextTitle = 'My new page title'
+    const nextState = { additionalInformation: 'Updated the URL with JS' }
+
+    // This will create a new entry in the browser's history, without reloading
+    // window.history.pushState(nextState, nextTitle, nextURL)
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState, nextTitle, nextURL)
+
+    // const href = `${url.split('?').pop()}`
+    // window.history.pushState({}, '', `admin.php?${href}`)
+
+    // remove the ? from the url
+    url = url.split('?').pop()
+
+    // in case we want to fetch and display edit and add pages which btns are not in the sidebar
+    if (url.includes('edit') || url.includes('add')) {
+      // edit page
+      if (url.includes('edit')) {
+        const link = url.split('edit_').pop()
+        const activeLink = allSideMenu.find((item) => {
+          return item.getAttribute('href') === `admin.php?${link}`
+        })
+        activeLink.parentElement.classList.add('active')
+
+        fetchPages(`../../resources/templates/back/pages/${url}.php`).then((data) => {
+          container.innerHTML = data
+          pageOperation(container)
+        })
+
+        return
+      }
+      if (url.includes('add')) {
+        // add page
+
+        // check if there is any add page on the sidebar
+        const sidebarLink = allSideMenu.find((item) => {
+          return item.getAttribute('href') === `admin.php?${url}`
+        })
+        // if not
+        if (!sidebarLink) {
+          const link = url.split('add_').pop()
+
+          const activeLink = allSideMenu.find((item) => {
+            return item.getAttribute('href') === `admin.php?${link}`
+          })
+          activeLink.parentElement.classList.add('active')
+
+          fetchPages(`../../resources/templates/back/pages/${url}.php`).then((data) => {
+            container.innerHTML = data
+            pageOperation(container)
+          })
+
+          return
+        } else {
+          // if there is add page on the sidebar
+          sidebarLink.parentElement.classList.add('active')
+          // remove active on the rest of sidebar links
+          allSideMenu.forEach((item) => {
+            if (item !== sidebarLink) {
+              item.parentElement.classList.remove('active')
+            }
+          })
+
+          fetchPages(`../../resources/templates/back/pages/${url}.php`).then((data) => {
+            container.innerHTML = data
+            pageOperation(container)
+          })
+
+          return
+        }
+      }
+    }
+    // set the active sidebar link
+    const activeLink = allSideMenu.find((item) => {
+      return item.getAttribute('href') === `admin.php?${url}`
+    })
+    activeLink.parentElement.classList.add('active')
+    // remove active on the rest of sidebar links
+    allSideMenu.forEach((item) => {
+      if (item !== activeLink) {
+        item.parentElement.classList.remove('active')
+      }
+    })
+
+    // fetch and display the page
+    const page = await fetchPages(`../../resources/templates/back/pages/${url}.php`)
+    container.innerHTML = page
+
+    // operations done on the page
+    pageOperation(container)
+  } else {
+    // set the url on window after clicking on home btn
+    // window.history.pushState({}, '', 'admin.php')
+    const nextURL = 'admin.php'
+    const nextTitle = 'My new page title'
+    const nextState = { additionalInformation: 'Updated the URL with JS' }
+
+    // This will create a new entry in the browser's history, without reloading
+    // window.history.pushState(nextState, nextTitle, nextURL)
+
+    // This will replace the current entry in the browser's history, without reloading
+    window.history.replaceState(nextState, nextTitle, nextURL)
+
+    // set the active sidebar link
+    const activeLink = allSideMenu.find((item) => {
+      return item.getAttribute('href') === 'admin.php'
+    })
+    activeLink.parentElement.classList.add('active')
+
+    // remove active on the rest of sidebar links
+    allSideMenu.forEach((item) => {
+      if (item !== activeLink) {
+        item.parentElement.classList.remove('active')
+      }
+    })
+
+    // fetch and display the page
+    const page = await fetchPages(`../../resources/templates/back/pages/admin_index.php`)
+    container.innerHTML = page
+
+    // operations done on the page
+    pageOperation(container)
+  }
+}
+
+export default setMainSection
+
+
+
+
+
+/********************************************************************************/
+ 
+   // change container after url changes
+  // window.addEventListener('popstate', function (e) {
+  //   e.preventDefault()
+  //   url = window.location.href
+  //   setMainSection(url)
+  // })
+
+  // if (window.history) {
+  //   var myOldUrl = window.location.href
+  //   window.addEventListener('hashchange', function () {
+  //     window.history.pushState({}, null, myOldUrl)
+  //     setMainSection(myOldUrl)
+  //   })
+  // }
+ 
+ 

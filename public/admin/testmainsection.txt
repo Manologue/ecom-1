@@ -1,0 +1,150 @@
+import { allSideMenu } from './sidebar.js'
+import pageOperation from './pageOperation.js'
+import fetchPages from './fetchPages.js'
+
+const container = document.querySelector('#main-container')
+
+const setMainSection = async (url) => {
+  // console.log(url)
+  if (url.includes('?')) {
+    // set the url on window after clicking on a link
+
+    // window.history.pushState({}, '', `admin.php?${href}`)
+    // set the url on window after clicking on a link'
+
+    // check if we are on popstate
+
+    // const href = `${url.split('?').pop()}`
+    // const nextURL = `admin.php?${href}`
+    // const nextTitle = 'My new page title'
+    // const nextState = { additionalInformation: nextURL }
+
+    // window.history.pushState(nextState, nextTitle, nextURL)
+    console.log(window.history.state)
+
+    // remove the ? from the url
+
+    url = url.split('?').pop()
+
+    // in case we want to fetch and display edit and add pages which btns are not in the sidebar
+    if (url.includes('edit') || url.includes('add') || url.includes('gallery')) {
+      // edit page
+      if (url.includes('edit') || url.includes('gallery')) {
+        console.log(url)
+        // get id
+        const id = url.split('=')[1]
+
+        //set active sidebar link
+        let link = url.split('_').pop()
+        link = `${link.split('s')[0]}s`
+        console.log(link)
+        const activeLink = allSideMenu.find((item) => {
+          return item.getAttribute('href') === `admin.php?${link}`
+        })
+        activeLink.parentElement.classList.add('active')
+        // arrange url before fetch
+        url = `${url.split('&')[0]}` // eg edit_products
+        console.log(url)
+
+        // fetch url page
+        fetchPages(`../../resources/templates/back/pages/${url}.php?id=${id}`).then(
+          (data) => {
+            container.innerHTML = data
+            pageOperation(container)
+          }
+        )
+
+        return
+      }
+      if (url.includes('add')) {
+        // add page
+        console.log(url)
+        // check if there is any add page on the sidebar
+        const sidebarLink = allSideMenu.find((item) => {
+          return item.getAttribute('href') === `admin.php?${url}`
+        })
+        // if not
+        if (!sidebarLink) {
+          const link = url.split('add_').pop()
+
+          const activeLink = allSideMenu.find((item) => {
+            return item.getAttribute('href') === `admin.php?${link}`
+          })
+          activeLink.parentElement.classList.add('active')
+
+          fetchPages(`../../resources/templates/back/pages/${url}.php`).then((data) => {
+            container.innerHTML = data
+            pageOperation(container)
+          })
+
+          return
+        } else {
+          // if there is add page on the sidebar
+          sidebarLink.parentElement.classList.add('active')
+          // remove active on the rest of sidebar links
+          allSideMenu.forEach((item) => {
+            if (item !== sidebarLink) {
+              item.parentElement.classList.remove('active')
+            }
+          })
+
+          fetchPages(`../../resources/templates/back/pages/${url}.php`).then((data) => {
+            container.innerHTML = data
+            pageOperation(container)
+          })
+
+          return
+        }
+      }
+    }
+    // set the active sidebar link
+    const activeLink = allSideMenu.find((item) => {
+      return item.getAttribute('href') === `admin.php?${url}`
+    })
+    activeLink.parentElement.classList.add('active')
+    // remove active on the rest of sidebar links
+    allSideMenu.forEach((item) => {
+      if (item !== activeLink) {
+        item.parentElement.classList.remove('active')
+      }
+    })
+
+    // fetch and display the page
+    const page = await fetchPages(`../../resources/templates/back/pages/${url}.php`)
+    container.innerHTML = page
+
+    // operations done on the page
+    pageOperation(container)
+  } else {
+    // set the url on window after clicking on home btn
+    // const nextURL = 'admin.php'
+    // const nextTitle = 'My new page title'
+    // const nextState = { additionalInformation: 'Updated the URL with JS' }
+
+    // window.history.pushState(nextState, nextTitle, nextURL)
+    // history.pushState({}, 'new page', 'admin.php')
+    console.log(window.history.state)
+
+    // set the active sidebar link
+    const activeLink = allSideMenu.find((item) => {
+      return item.getAttribute('href') === 'admin.php'
+    })
+    activeLink.parentElement.classList.add('active')
+
+    // remove active on the rest of sidebar links
+    allSideMenu.forEach((item) => {
+      if (item !== activeLink) {
+        item.parentElement.classList.remove('active')
+      }
+    })
+
+    // fetch and display the page
+    const page = await fetchPages(`../../resources/templates/back/pages/admin_index.php`)
+    container.innerHTML = page
+
+    // operations done on the page
+    pageOperation(container)
+  }
+}
+
+export default setMainSection
